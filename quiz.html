@@ -1,25 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Quiz</title>
-    
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="quiz.css"> <!-- Make sure quiz.css is in the same folder as this HTML file -->
-    
-    <!-- jQuery CDN (required for the quiz to work) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    
-    <!-- Quiz JavaScript file -->
-    <script src="quiz.js" defer></script> <!-- Make sure quiz.js is in the same folder as this HTML file -->
+  <title>Quiz</title>
+  <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" href="https://daniel-new.github.io/ingles24horas-quiz-assets/quiz.css">
+  <style>
+    /* Your custom CSS (the stuff you had before) goes here */
+    /* ... all your .quiz-container, .question, etc. styles ... */
+    .quiz-container {
+        padding: 0em;
+        max-width: 100%;
+        margin: 1em auto;
+    }
+    .quiz-container a {
+        text-decoration: none;
+        color: #313131;
+    }
+    /* ... all your other CSS rules ... */
+  </style>
 </head>
 <body>
 
-<!-- Main Quiz Container -->
-<div class="quiz-container" id="quiz-container">
-    <!-- Quiz content will be dynamically generated here -->
+<div id="quiz">
+  <div id="quiz-header">
+    <p><a id="quiz-home-btn"></a></p>
+  </div>
+  <div id="quiz-start-screen">
+    <p><a href="#" id="quiz-start-btn" class="quiz-button">INICIAR TESTE</a></p>
+  </div>
 </div>
 
-</body>
+<script src="https://daniel-new.github.io/ingles24horas-quiz-assets/quiz.js"></script>
+
+<script>
+$(document).ready(function() {
+  var quizQuestions = [ // Array to hold all quiz questions
+    {
+      'q': '<font style="font-weight:bold">"If it __ tomorrow, we will stay at home."</font>',
+      'options': [
+        "(A) rained",
+        "(B) rains",
+        "(C) rain",
+        "(D) will rain"
+      ],
+      'correctIndex': 1,
+      'correctResponse': '<p class="ex11">Correto!</p>',
+      'incorrectResponse': '<p class="ex22">Incorreto!</p>'
+    },
+    // Add more questions here in the same format
+    {
+      'q': '<font style="font-weight:bold">"She would travel more if she __ enough money."</font>',
+      'options': [
+        "(A) have",
+        "(B) had",
+        "(C) has",
+        "(D) would have"
+      ],
+      'correctIndex': 1,
+      'correctResponse': '<p class="ex11">Correto!</p>',
+      'incorrectResponse': '<p class="ex22">Incorreto!</p>'
+    },
+    // ... all your other questions ...
+  ]; // End of quizQuestions array
+
+  $('#quiz').quiz({
+    counterFormat: 'Pergunta %current de %total',
+    questions: quizQuestions // Use the array here
+  });
+}); // Closing for $(document).ready
+</script> </body>
 </html>
